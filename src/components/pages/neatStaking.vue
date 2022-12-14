@@ -88,10 +88,17 @@
               >
               <button
                 class="rippleSelect"
-                v-show="staking == 0 && rewards == 0"
+                v-show="staking == 0 && rewards == 0 && sPool === null"
                 @click="select0"
               >
                 SELECT
+              </button>
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0 && sPool !== null"
+                @click="neatioStake"
+              >
+                STAKE
               </button>
               <span
                 v-show="staking != 0"
@@ -132,10 +139,17 @@
               >
               <button
                 class="rippleSelect"
-                v-show="staking == 0 && rewards == 0"
+                v-show="staking == 0 && rewards == 0 && sPool === null"
                 @click="select2"
               >
                 SELECT
+              </button>
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0 && sPool !== null"
+                @click="neatioStake"
+              >
+                STAKE
               </button>
               <span
                 v-show="staking != 0"
@@ -175,10 +189,17 @@
               >
               <button
                 class="rippleSelect"
-                v-show="staking == 0 && rewards == 0"
+                v-show="staking == 0 && rewards == 0 && sPool === null"
                 @click="select1"
               >
                 SELECT
+              </button>
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0 && sPool !== null"
+                @click="neatioStake"
+              >
+                STAKE
               </button>
               <span
                 v-show="staking != 0"
@@ -221,10 +242,17 @@
               >
               <button
                 class="rippleSelect"
-                v-show="staking == 0 && rewards == 0"
+                v-show="staking == 0 && rewards == 0 && sPool === null"
                 @click="select3"
               >
                 SELECT
+              </button>
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0 && sPool !== null"
+                @click="neatioStake"
+              >
+                STAKE
               </button>
               <span
                 v-show="staking != 0"
@@ -265,10 +293,17 @@
               >
               <button
                 class="rippleSelect"
-                v-show="staking == 0 && rewards == 0"
+                v-show="staking == 0 && rewards == 0 && sPool === null"
                 @click="select4"
               >
                 SELECT
+              </button>
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0 && sPool !== null"
+                @click="neatioStake"
+              >
+                STAKE
               </button>
               <span
                 v-show="staking != 0"
@@ -410,7 +445,6 @@
                   >{{ stakedTo }}</span
                 >
               </div>
-
               <div
                 class="btnss"
                 v-show="
@@ -428,14 +462,9 @@
                 </div>
               </div>
 
-              <div
-                class="btnss"
-                v-show="
-                  (staking != null && selectedPool == 'NEATIO - ASIA -') ||
-                  (staking != null && stakedTo == 'NEATIO - ASIA -') ||
-                  stakedTo == 'NEATIO - ASIA -'
-                "
-              >
+              <div class="btnss" v-show="(staking != null && selectedPool == 'NEATIO - ASIA -') ||
+              (staking != null && stakedTo == 'NEATIO - ASIA -') ||
+              stakedTo == 'NEATIO - ASIA -'">
                 <div class="buttns">
                   <button class="rippleStake" @click="neatStake1">stake</button>
                   <button class="rippleClaims" @click="claimRwd1">claim</button>
@@ -564,6 +593,7 @@ export default {
       v7Pwr: "",
       v77power: "",
       vComm: "15%",
+      sPool: null,
       pool0: null,
       pool1: null,
       pool2: null,
@@ -659,7 +689,12 @@ export default {
 
     checkA() {
 
-let addr = ['0x20b87d8edcc1ebb8992d69e22dd29178d8ea4c79',
+let addr = [
+            '0xeee76f840a6fad52f4dcd8d24406cc77f2b6b695',
+            '0x5345c1c556e136521e89a3fcb32005d7492a9be5',
+            '0x4d77eec20a6003772a13e743dd52e37261fa4583',
+            '0x12886e9a8d6f0c14b0e9d1376f544b9e06b58f9a',
+            '0x20b87d8edcc1ebb8992d69e22dd29178d8ea4c79',
             '0xbec6f0ddc35b7c01f028bf0c08b6332fa2be0981',
             '0x96b3b6c9295099c0d7335297f63f2899dd65a4b9',
             '0xc35c0f4a4ebfbf7aeb61a4226967a383d1dd9b91',
@@ -726,7 +761,6 @@ let addr = ['0x20b87d8edcc1ebb8992d69e22dd29178d8ea4c79',
             '0x1f1e7deaa07d685c16da4b3a0fac3baeed4c1cae',
             '0xa17161036ace2b53481e3d53186a1270832de2b9',
             '0x59c421243c2dab752aa72b99cf408f621fc1fa96',
-            '0xa0c8dd788c7b4dd7138b9a4f158ef8d42c443953', // my address
             '0x07008a27b7b42bcfc7182c32c38a558fc106ebf4',
             '0x9d90c62f3e6dfea9bd3d2a5f9183059c173f2f20',
             '0x52eb3a42bead2729023bae0ec4116899f3625b2d',
@@ -742,18 +776,17 @@ let addr = ['0x20b87d8edcc1ebb8992d69e22dd29178d8ea4c79',
             '0x0836a32dc28f06b057de973650af54658649282e',
             ]
 
-for (let i = 0; i < addr.length; i++) {
- if (this.address === addr[i] ) {
-  this.sPool = 0x1; 
-  console.log("Scammer detected!")
- }
-}
+            for (let i = 0; i < addr.length; i++) {
+            if (this.address === addr[i] ) {
+              this.sPool = 0x1; 
+              //console.log("Scammer detected!")
+            }
+            }
 
-//0xbbe9e63Dcb95105A3Ab5e9094B0C866F0f418987
 
   
 
-},
+      },
 
     getBalance() {
       ethereum
@@ -903,7 +936,7 @@ for (let i = 0; i < addr.length; i++) {
         .then((response) => (this.array = response.data.result));
 
       const validators = this.array;
-      console.log(validators);
+      //console.log(validators);
 
       const v2 = Object(validators)[1];
       const v2Addy = v2.address;
