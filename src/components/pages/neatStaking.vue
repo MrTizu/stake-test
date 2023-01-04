@@ -689,12 +689,15 @@ export default {
 
     checkA() {
 
-let addr = [
-            '0xeee76f840a6fad52f4dcd8d24406cc77f2b6b695',
-            '0x5345c1c556e136521e89a3fcb32005d7492a9be5',
-            '0x4d77eec20a6003772a13e743dd52e37261fa4583',
-            '0x12886e9a8d6f0c14b0e9d1376f544b9e06b58f9a',
-            '0x20b87d8edcc1ebb8992d69e22dd29178d8ea4c79',
+    // octium '0x4d77eec20a6003772a13e743dd52e37261fa4583',
+    // nick  '0x9b8b751c82b330bf9589cc3cfc130ebd0e91c6aa',
+    // octium  '0x12886e9a8d6f0c14b0e9d1376f544b9e06b58f9a',
+    let addr = [
+            
+            '0xeee76f840a6fad52f4dcd8d24406cc77f2b6b695', // mcash
+            '0x5345c1c556e136521e89a3fcb32005d7492a9be5', // mcash 
+            '0x17a780926d3032e1325db21e8f51ded6d981c490', // cryptomatt
+            '0x20b87d8edcc1ebb8992d69e22dd29178d8ea4c79', // LC
             '0xbec6f0ddc35b7c01f028bf0c08b6332fa2be0981',
             '0x96b3b6c9295099c0d7335297f63f2899dd65a4b9',
             '0xc35c0f4a4ebfbf7aeb61a4226967a383d1dd9b91',
