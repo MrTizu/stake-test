@@ -65,9 +65,61 @@
       </div>
       <div class="boxes">
         <div class="box1">
+
+          <div class="pools">
+            <div class="vAddy1" id="pool2">
+              <span style="color: #496785">1.</span> {{ "ROMANIA POOL" }}
+              <span style="color: #496785">Pool Fee:</span>
+              <span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+                >{{ vComm }}</span
+              >
+              <span style="color: #496785">Staking Power:</span>
+              <span
+                style="
+                  font-family: Helvetica;
+                  font-weight: normal;
+                  font-size: 14px;
+                "
+                >{{ (+v44power).toLocaleString() }}</span
+              >
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0 && sPool === null"
+                @click="select2"
+              >
+                SELECT
+              </button>
+              <button
+                class="rippleSelect"
+                v-show="staking == 0 && rewards == 0 && sPool !== null"
+                @click="neatioStake"
+              >
+                STAKE
+              </button>
+              <span
+                v-show="staking != 0"
+                style="
+                  color: #496785;
+                  font-size: 14px;
+                  font-weight: normal;
+                  font-family: Pirulen, Helvetica;
+                "
+              >
+                NEAT</span
+              >
+            </div>
+            <div class="sep"></div>
+          </div>
+
+
           <div class="pools">
             <div class="vAddy11" id="pool0">
-              <span style="color: #496785">1.</span> {{ "DAMUN 8 POOL" }}
+              <span style="color: #496785">2.</span> {{ "DAMUN 8 POOL" }}
               <span style="color: #496785">Pool Fee:</span>
               <span
                 style="
@@ -116,55 +168,7 @@
             <div class="sep"></div>
           </div>
 
-          <div class="pools">
-            <div class="vAddy1" id="pool2">
-              <span style="color: #496785">2.</span> {{ "ROMANIA POOL" }}
-              <span style="color: #496785">Pool Fee:</span>
-              <span
-                style="
-                  font-family: Helvetica;
-                  font-weight: normal;
-                  font-size: 14px;
-                "
-                >{{ vComm }}</span
-              >
-              <span style="color: #496785">Staking Power:</span>
-              <span
-                style="
-                  font-family: Helvetica;
-                  font-weight: normal;
-                  font-size: 14px;
-                "
-                >{{ (+v44power).toLocaleString() }}</span
-              >
-              <button
-                class="rippleSelect"
-                v-show="staking == 0 && rewards == 0 && sPool === null"
-                @click="select2"
-              >
-                SELECT
-              </button>
-              <button
-                class="rippleSelect"
-                v-show="staking == 0 && rewards == 0 && sPool !== null"
-                @click="neatioStake"
-              >
-                STAKE
-              </button>
-              <span
-                v-show="staking != 0"
-                style="
-                  color: #496785;
-                  font-size: 14px;
-                  font-weight: normal;
-                  font-family: Pirulen, Helvetica;
-                "
-              >
-                NEAT</span
-              >
-            </div>
-            <div class="sep"></div>
-          </div>
+
 
           <div class="pools">
             <div class="vAddy11" id="pool1">
