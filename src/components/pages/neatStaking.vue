@@ -10,7 +10,7 @@
 
           <div class="stats1">
             <div class="itemsD">Avg. Block Time</div>
-            <div class="valueD">1.2 seconds</div>
+            <div class="valueD">~ 1 second</div>
           </div>
           <div class="stats1">
             <div class="itemsD">Staking APY</div>
